@@ -1,9 +1,12 @@
 package com.tan.example.service;
 
+import com.tan.example.dto.Enterprise;
 import com.tan.example.entity.EnterpriseEntity;
+import com.tan.example.mapper.EnterpriseMapper;
 import org.bson.types.ObjectId;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.List;
@@ -11,17 +14,22 @@ import java.util.List;
 @ApplicationScoped
 @Transactional(Transactional.TxType.REQUIRED)
 public class EnterpriseService implements EnterpriseInterface {
-  public List<EnterpriseEntity> findAllEnterprises() {
-    return EnterpriseEntity.listAll();
+
+  @Inject
+  EnterpriseMapper enterpriseMapper;
+
+  public List<Enterprise> findAllEnterprises() {
+    return this.enterpriseMapper.toDtoList(EnterpriseEntity.listAll());
   }
 
-  public EnterpriseEntity findEnterpriseById(String id) {
+  public Enterprise findEnterpriseById(String id) {
     final ObjectId enterpriseId = new ObjectId(id);
-    return EnterpriseEntity.findById(enterpriseId);
+    return this.enterpriseMapper.toDto(EnterpriseEntity.findById(enterpriseId));
   }
 
-  public EnterpriseEntity createEnterprise(@Valid EnterpriseEntity enterpriseEntity) {
+  public Enterprise createEnterprise(@Valid Enterprise enterprise) {
+    EnterpriseEntity enterpriseEntity = this.enterpriseMapper.toEntity(enterprise);
     EnterpriseEntity.persist(enterpriseEntity);
-    return  enterpriseEntity;
+    return this.enterpriseMapper.toDto(enterpriseEntity);
   }
 }

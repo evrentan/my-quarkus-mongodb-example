@@ -1,14 +1,14 @@
 package com.tan.example.service;
 
-import com.tan.example.entity.EnterpriseEntity;
+import com.tan.example.dto.Enterprise;
 
 import javax.validation.Valid;
 import java.util.List;
 
 public interface EnterpriseInterface {
-  List<EnterpriseEntity> findAllEnterprises();
+  List<Enterprise> findAllEnterprises();
 
-  EnterpriseEntity findEnterpriseById(String id);
+  Enterprise findEnterpriseById(String id);
 
-  EnterpriseEntity createEnterprise(@Valid EnterpriseEntity enterpriseEntity);
+  Enterprise createEnterprise(@Valid Enterprise enterpriseEntity);
 }
