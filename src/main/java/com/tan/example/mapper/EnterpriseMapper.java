@@ -22,7 +22,7 @@ public interface EnterpriseMapper {
 
   List<Enterprise> toDtoList(List<EnterpriseEntity> enterpriseEntityList);
 
-  @BeforeMapping
+  @AfterMapping
   default void setEntityId(Enterprise enterprise, @MappingTarget EnterpriseEntity enterpriseEntity) {
     if(Objects.nonNull(enterprise.id))
       enterpriseEntity.id = new ObjectId(enterprise.id);
