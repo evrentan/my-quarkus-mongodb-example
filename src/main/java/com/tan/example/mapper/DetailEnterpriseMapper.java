@@ -14,41 +14,41 @@ public interface DetailEnterpriseMapper {
 
   @Mappings({
       @Mapping(target = "id", expression = "java(enterpriseEntity.id.toString())"),
-      @Mapping(source = "enterpriseEntity.name", target = "name"),
-      @Mapping(source = "enterpriseEntity.webPage", target = "webPage"),
+      @Mapping(target = "name", source = "enterpriseEntity.name"),
+      @Mapping(target = "webPage", source = "enterpriseEntity.webPage"),
       @Mapping(target = "address.id", expression = "java(addressEntity.id.toString())"),
-      @Mapping(source = "addressEntity.country", target = "address.country"),
-      @Mapping(source = "addressEntity.city", target = "address.city"),
-      @Mapping(source = "addressEntity.district", target = "address.district"),
-      @Mapping(source = "addressEntity.neighborhood", target = "address.neighborhood"),
-      @Mapping(source = "addressEntity.streetName", target = "address.streetName"),
-      @Mapping(source = "addressEntity.streetNumber", target = "address.streetNumber"),
-      @Mapping(source = "addressEntity.houseNumber", target = "address.houseNumber"),
-      @Mapping(source = "addressEntity.doorNumber", target = "address.doorNumber"),
-      @Mapping(source = "addressEntity.postalCode", target = "address.postalCode"),
-      @Mapping(source = "addressEntity.condoUnitId", target = "address.condoUnitId")
+      @Mapping(target = "address.country", source = "addressEntity.country"),
+      @Mapping(target = "address.city", source = "addressEntity.city"),
+      @Mapping(target = "address.district", source = "addressEntity.district"),
+      @Mapping(target = "address.neighborhood", source = "addressEntity.neighborhood"),
+      @Mapping(target = "address.streetName", source = "addressEntity.streetName"),
+      @Mapping(target = "address.streetNumber", source = "addressEntity.streetNumber"),
+      @Mapping(target = "address.houseNumber", source = "addressEntity.houseNumber"),
+      @Mapping(target = "address.doorNumber", source = "addressEntity.doorNumber"),
+      @Mapping(target = "address.postalCode", source = "addressEntity.postalCode"),
+      @Mapping(target = "address.condoUnitId", source = "addressEntity.condoUnitId")
   })
   DetailEnterprise toDetailEnterprise(EnterpriseEntity enterpriseEntity, AddressEntity addressEntity);
 
   @Mappings({
       @Mapping(target = "id", ignore = true),
-      @Mapping(source = "detailEnterprise.name", target = "name"),
-      @Mapping(source = "detailEnterprise.webPage", target = "webPage")
+      @Mapping(target = "name", source = "detailEnterprise.name"),
+      @Mapping(target = "webPage", source = "detailEnterprise.webPage")
   })
   EnterpriseEntity toEnterpriseEntity(DetailEnterprise detailEnterprise);
 
   @Mappings({
       @Mapping(target = "id", ignore = true),
-      @Mapping(source = "detailEnterprise.address.country", target = "country"),
-      @Mapping(source = "detailEnterprise.address.city", target = "city"),
-      @Mapping(source = "detailEnterprise.address.district", target = "district"),
-      @Mapping(source = "detailEnterprise.address.neighborhood", target = "neighborhood"),
-      @Mapping(source = "detailEnterprise.address.streetName", target = "streetName"),
-      @Mapping(source = "detailEnterprise.address.streetNumber", target = "streetNumber"),
-      @Mapping(source = "detailEnterprise.address.houseNumber", target = "houseNumber"),
-      @Mapping(source = "detailEnterprise.address.doorNumber", target = "doorNumber"),
-      @Mapping(source = "detailEnterprise.address.postalCode", target = "postalCode"),
-      @Mapping(source = "detailEnterprise.address.condoUnitId", target = "condoUnitId")
+      @Mapping(target = "country", source = "detailEnterprise.address.country"),
+      @Mapping(target = "city", source = "detailEnterprise.address.city"),
+      @Mapping(target = "district", source = "detailEnterprise.address.district"),
+      @Mapping(target = "neighborhood", source = "detailEnterprise.address.neighborhood"),
+      @Mapping(target = "streetName", source = "detailEnterprise.address.streetName"),
+      @Mapping(target = "streetNumber", source = "detailEnterprise.address.streetNumber"),
+      @Mapping(target = "houseNumber", source = "detailEnterprise.address.houseNumber"),
+      @Mapping(target = "doorNumber", source = "detailEnterprise.address.doorNumber"),
+      @Mapping(target = "postalCode", source = "detailEnterprise.address.postalCode"),
+      @Mapping(target = "condoUnitId", source = "detailEnterprise.address.condoUnitId")
   })
   AddressEntity toAddressEntity(DetailEnterprise detailEnterprise);
 

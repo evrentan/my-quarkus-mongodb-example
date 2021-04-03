@@ -13,15 +13,15 @@ public interface EnterpriseAddressMapper {
 
   @Mappings({
       @Mapping(target = "id", expression = "java(enterpriseAddressEntity.id.toString())"),
-      @Mapping(source = "enterpriseAddressEntity.enterpriseId", target = "enterpriseId"),
-      @Mapping(source = "enterpriseAddressEntity.addressId", target = "addressId")
+      @Mapping(target = "enterpriseId", source = "enterpriseAddressEntity.enterpriseId"),
+      @Mapping(target = "addressId", source = "enterpriseAddressEntity.addressId")
   })
   EnterpriseAddress toDto(EnterpriseAddressEntity enterpriseAddressEntity);
 
   @Mappings({
       @Mapping(target = "id", ignore = true),
-      @Mapping(source = "enterpriseAddress.enterpriseId", target = "enterpriseId"),
-      @Mapping(source = "enterpriseAddress.addressId", target = "addressId")
+      @Mapping(target = "enterpriseId", source = "enterpriseAddress.enterpriseId"),
+      @Mapping(target = "addressId", source = "enterpriseAddress.addressId")
   })
   EnterpriseAddressEntity toEntity(EnterpriseAddress enterpriseAddress);
 
